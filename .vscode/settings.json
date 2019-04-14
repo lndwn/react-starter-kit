@@ -1,0 +1,8 @@
+{
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.packageManager": "yarn",
+  "prettier.eslintIntegration": true,
+  "prettier.requireConfig": true,
+  "prettier.stylelintIntegration": true
+}
