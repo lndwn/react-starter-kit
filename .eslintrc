@@ -10,17 +10,18 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "modules": true
+      "modules": true,
+      "jsx": true
     },
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "prettier", "react"],
+  "plugins": ["@typescript-eslint", "react", "prettier"],
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
     "eslint:recommended",
-    "prettier",
-    "prettier/@typescript-eslint"
+    "plugin:react/recommended",
+    "prettier/@typescript-eslint",
+    "prettier"
   ],
   "rules": {
     "prettier/prettier": "error",
@@ -35,10 +36,9 @@
   },
   "overrides": [
     {
-      "parser": "espree",
-      "files": ["webpack.config.js"],
-      "env": {
-        "node": true
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
       }
     }
   ]
