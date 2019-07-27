@@ -1,7 +1,9 @@
 const webpack = require('webpack')
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.tsx',
   devtool: 'source-map',
   resolve: {
@@ -40,22 +42,32 @@ module.exports = {
     ],
   },
   output: {
-    path: __dirname + '/build',
+    path: __dirname + '/dist',
     publicPath: '/',
     filename: 'bundle.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'React, TypeScript, Webpack Scaffold',
-      template: './src/static/index.html',
-      inject: 'head',
+      filename: 'index.html',
+      template: 'src/static/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
-    contentBase: './src',
+    contentBase: path.join(__dirname, 'dist'),
     hot: true,
     port: 3000,
     compress: true,
+    historyApiFallback: true,
+    index: 'index.html',
+  },
+  stats: {
+    assets: false,
+    children: false,
+    chunks: false,
+    entrypoints: false,
+    modules: false,
+    version: false,
   },
 }

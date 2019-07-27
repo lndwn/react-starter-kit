@@ -15,16 +15,20 @@
     },
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "react", "prettier"],
+  "plugins": [
+    "prettier",
+    "react",
+    "@typescript-eslint" //
+  ],
   "extends": [
+    "prettier",
     "plugin:@typescript-eslint/recommended",
-    "eslint:recommended",
-    "plugin:react/recommended",
     "prettier/@typescript-eslint",
-    "prettier"
+    "plugin:react/recommended",
+    "eslint:recommended"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": 2,
     "no-unused-vars": 1,
     "react/prop-types": 0
   },
