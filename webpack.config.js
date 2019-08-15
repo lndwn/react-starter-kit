@@ -1,9 +1,10 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
 
 module.exports = {
-  mode: 'development',
   entry: './src/index.tsx',
   devtool: 'source-map',
   resolve: {
@@ -12,7 +13,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
+        test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
@@ -29,38 +30,39 @@ module.exports = {
       },
       {
         enforce: 'pre',
-        test: /\.(ts|tsx)$/,
+        test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
         use: ['eslint-loader'],
       },
       {
         enforce: 'pre',
-        test: /\.(ts|tsx)$/,
+        test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
         use: ['source-map-loader'],
       },
     ],
   },
-  output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js',
-  },
   plugins: [
+    new CleanWebpackPlugin(),
+    new ManifestPlugin(),
     new HtmlWebpackPlugin({
       title: 'React, TypeScript, Webpack Scaffold',
-      filename: 'index.html',
       template: 'src/static/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
+  output: {
+    filename: 'bundle.[hash].js',
+    path: path.resolve(__dirname, 'dist'),
+  },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    // publicPath: '/', // '/' is default, i.e. localhost:3000/bundle.js
+    contentBase: './dist', // for static files, default is cwd
     hot: true,
     port: 3000,
     compress: true,
+    progress: true,
     historyApiFallback: true,
-    index: 'index.html',
   },
   stats: {
     assets: false,

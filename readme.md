@@ -1,9 +1,9 @@
-- [ ] Babel - Compiler
-- [ ] Typescript - Type checking
-- [ ] ESLint - Linting
-- [ ] StyleLint - Linting
-- [ ] Prettier - Code formatting
-- [ ] Webpack - Bundling
-- [ ] Styled Components/Styled System - CSS in JS
+- [x] Babel - Compiler
+- [x] Typescript - Types
+- [x] ESLint - Linting
+- [x] StyleLint - Linting
+- [x] Prettier - Code formatting
+- [x] Webpack - Bundling
+- [x] Styled Components/Styled System - CSS in JS
 - [ ] Test running - Mocha
 - [ ] Assertions - Chai

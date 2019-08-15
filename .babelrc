@@ -5,15 +5,6 @@
     ["@babel/preset-typescript", {}]
   ],
   "plugins": [
-    [
-      "babel-plugin-styled-components",
-      {
-        "displayName": true,
-        "fileName": false,
-        "minify": true,
-        "pure": true
-      }
-    ],
     ["@babel/proposal-class-properties", {}],
     ["@babel/proposal-object-rest-spread", {}]
   ]

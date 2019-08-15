@@ -5,32 +5,17 @@
     "node": true,
     "es6": true
   },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "modules": true,
-      "jsx": true
-    },
-    "project": "./tsconfig.json"
-  },
-  "plugins": [
-    "prettier",
-    "react",
-    "@typescript-eslint" //
-  ],
+  "plugins": ["react", "prettier"],
   "extends": [
-    "prettier",
-    "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
+    "eslint:recommended",
     "plugin:react/recommended",
-    "eslint:recommended"
+    "prettier",
+    "plugin:prettier/recommended"
   ],
   "rules": {
-    "prettier/prettier": 2,
-    "no-unused-vars": 1,
-    "react/prop-types": 0
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "react/prop-types": "off"
   },
   "settings": {
     "react": {
@@ -40,9 +25,31 @@
   },
   "overrides": [
     {
-      "files": ["*.js"],
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off"
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "modules": true,
+          "jsx": true
+        },
+        "project": "./tsconfig.json",
+        "plugins": [
+          "@typescript-eslint", //
+          "react",
+          "prettier"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:@typescript-eslint/eslint-recommended",
+          "plugin:@typescript-eslint/recommended",
+          "plugin:@typescript-eslint/recommended-requiring-type-checking",
+          "plugin:react/recommended",
+          "prettier",
+          "plugin:prettier/recommended",
+          "prettier/@typescript-eslint"
+        ]
       }
     }
   ]

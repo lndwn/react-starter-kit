@@ -4,5 +4,6 @@
   "eslint.packageManager": "yarn",
   "prettier.eslintIntegration": true,
   "prettier.requireConfig": true,
-  "prettier.stylelintIntegration": true
+  "prettier.stylelintIntegration": true,
+  "javascript.format.enable": false
 }
