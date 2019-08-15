@@ -1,9 +1,6 @@
-- [x] Babel - Compiler
+- [x] Babel - Transpiler
 - [x] Typescript - Types
 - [x] ESLint - Linting
-- [x] StyleLint - Linting
 - [x] Prettier - Code formatting
 - [x] Webpack - Bundling
-- [x] Styled Components/Styled System - CSS in JS
-- [ ] Test running - Mocha
-- [ ] Assertions - Chai
+- [ ] ReactTestingLibrary - Tests
