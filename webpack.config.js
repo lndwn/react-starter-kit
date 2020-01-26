@@ -5,7 +5,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const GitRevisionPlugin = require('git-revision-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
-const pkg = require('./package.json')
 
 const gitRevision = new GitRevisionPlugin()
 
@@ -28,12 +27,12 @@ module.exports = {
   },
   entry: {
     app: [path.resolve('./src/index.tsx')],
-    vendor: Object.keys(pkg.dependencies),
   },
   output: {
     path: path.resolve('./public'),
     publicPath: '/',
     filename: '[name].[hash].js',
+    chunkFilename: '[name].[hash].js',
     sourceMapFilename: '[name].[hash].js.map',
   },
   optimization: {
