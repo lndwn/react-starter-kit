@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index.tsx renders with theme context 1`] = `
+.c0 {
+  color: #808080;
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+}
+
+<h1
+  class="c0"
+>
+  Hello World
+</h1>
+`;

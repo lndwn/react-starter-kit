@@ -1,9 +1,33 @@
 {
-  "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": true,
-  "eslint.packageManager": "yarn",
-  "prettier.eslintIntegration": true,
-  "prettier.requireConfig": true,
-  "prettier.stylelintIntegration": true,
-  "javascript.format.enable": false
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "typescript.validate.enable": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "tslint.configFile": "tslint.json",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules/**": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  "explorer.sortOrder": "type",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

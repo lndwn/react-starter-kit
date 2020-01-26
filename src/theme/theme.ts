@@ -1,0 +1,77 @@
+export const theme = {
+  borders: {},
+  borderStyles: {},
+  borderWidths: {},
+  colors: {
+    bg: {
+      primary: '#ffffff',
+      secondary: '#f8f8f8',
+      tertiary: '#ffffff',
+    },
+    text: {
+      primary: '#000000',
+      secondary: '#404040',
+      tertiary: '#808080',
+    },
+  },
+  fonts: {
+    heading: '"Inter", sans-serif',
+    body: '"Inter", sans-serif',
+  },
+  fontSizes: [
+    '0.75rem',
+    '0.875rem',
+    '1rem',
+    '1.25rem',
+    '1.5rem',
+    '3rem',
+    '5rem',
+  ],
+  fontWeights: {
+    thin: 100,
+    extraLight: 200,
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semiBold: 600,
+    bold: 700,
+    extraBold: 800,
+    black: 900,
+  },
+  letterSpacings: {
+    normal: '0em',
+    tracked: '0.1em',
+    megaTracked: '0.15em',
+  },
+  lineHeights: {
+    solid: 1,
+    heading: 1.15,
+    smallHeading: 1.25,
+    copy: 1.5,
+  },
+  radii: {},
+  shadows: {},
+  // width, height, min-width, max-width, min-height, max-height
+  sizes: ['1rem', '2rem', '3rem', '5rem', '8rem', '13rem', '21rem', '34rem'],
+  // margin, margin-top, margin-right, margin-bottom, margin-left,
+  // padding, padding-top, padding-right, padding-bottom, padding-left,
+  // grid-gap, grid-column-gap, grid-row-gap
+  space: [
+    '0.125rem',
+    '0.25rem',
+    '0.5rem',
+    '1rem',
+    '1.5rem',
+    '2rem',
+    '3rem',
+    '5rem',
+    '8rem',
+  ],
+  zIndices: {
+    canvas: 1,
+    popover: 2,
+    nav: 3,
+    draw: 4,
+    modal: 5,
+  },
+}

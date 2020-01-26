@@ -1,16 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ESNext",
     "moduleResolution": "node",
     "allowJs": true,
+    "checkJs": false,
     "noEmit": true,
     "strict": true,
     "noImplicitAny": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin"
+      }
+    ]
   },
-  "types": [],
-  "include": ["src/**/*"]
+  "include": ["./"]
 }
