@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const GitRevisionPlugin = require('git-revision-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
+const pkg = require('./package.json')
 
 const gitRevision = new GitRevisionPlugin()
 
@@ -22,11 +23,25 @@ const SVGRTemplate = (
 }
 
 module.exports = {
-  entry: './src/index.tsx',
-  devtool: 'source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.svg', '.png'],
   },
+  entry: {
+    app: [path.resolve('./src/index.tsx')],
+    vendor: Object.keys(pkg.dependencies),
+  },
+  output: {
+    path: path.resolve('./public'),
+    publicPath: '/',
+    filename: '[name].[hash].js',
+    sourceMapFilename: '[name].[hash].js.map',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -45,6 +60,7 @@ module.exports = {
               babel: false,
               icon: true,
               replaceAttrValues: { '#000': 'currentColor' },
+              prettierConfig: './prettier.config.js',
             },
           },
         ],
@@ -84,15 +100,16 @@ module.exports = {
     port: 3000,
   },
   stats: {
-    assets: false,
+    // all: true,
+    // assets: false,
     // assetsSort: '!size',
     // builtAt: true,
     // cached: true,
-    children: false,
-    chunks: false,
-    entrypoints: false,
-    modules: false,
-    version: false,
+    // children: false,
+    // chunks: true,
+    // entrypoints: false,
+    // modules: true,
+    // version: false,
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -116,8 +133,4 @@ module.exports = {
     }),
     // new BundleAnalyzerPlugin(),
   ],
-  output: {
-    filename: 'bundle.[hash].js',
-    path: path.resolve(__dirname, 'dist'),
-  },
 }

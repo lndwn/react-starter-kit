@@ -5,7 +5,7 @@ module.exports = {
     '@babel/preset-env',
   ],
   plugins: [
-    '@babel/transform-runtime',
+    // '@babel/plugin-transform-runtime',
     '@babel/plugin-transform-typescript',
     '@babel/proposal-class-properties',
     '@babel/proposal-object-rest-spread',
