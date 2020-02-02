@@ -1,27 +1,15 @@
-const webpack = require('webpack')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const GitRevisionPlugin = require('git-revision-webpack-plugin')
-const ManifestPlugin = require('webpack-manifest-plugin')
+import webpack from 'webpack'
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import BundleAnalyzerPlugin from 'webpack-bundle-analyzer'
+import GitRevisionPlugin from 'git-revision-webpack-plugin'
+import ManifestPlugin from 'webpack-manifest-plugin'
+import { SVGRTemplate } from './svgr.config'
 
 const gitRevision = new GitRevisionPlugin()
 
-const SVGRTemplate = (
-  { template },
-  opts,
-  { imports, componentName, props, jsx, exports }
-) => {
-  const TSTemplate = template.smart({ plugins: ['typescript'] })
-  return TSTemplate.ast`
-    import React from 'react';
-    const ${componentName} = (props: React.SVGProps<SVGSVGElement>) => ${jsx};
-    export default ${componentName};
-  `
-}
-
-module.exports = {
+const config: webpack.Configuration = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.svg', '.png'],
   },
@@ -49,7 +37,7 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /^icon-.+\.svg$/,
+        test: /icon-.+\.svg$/,
         use: [
           { loader: 'babel-loader' },
           {
@@ -133,3 +121,5 @@ module.exports = {
     // new BundleAnalyzerPlugin(),
   ],
 }
+
+export default config

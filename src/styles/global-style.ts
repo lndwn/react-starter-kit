@@ -77,10 +77,14 @@ const reset = css`
 /**
  * inter font family by @rsms
  */
+const fontFamily = css`
+  @import url('https://rsms.me/inter/inter.css');
+`
+
 export const GlobalStyle = createGlobalStyle`
   ${reset}
 
-  @import url('https://rsms.me/inter/inter.css');
+  ${fontFamily}
 
   html { 
     font-family: 'Inter', sans-serif;
