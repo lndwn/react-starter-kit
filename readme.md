@@ -44,7 +44,7 @@ A project scaffold for React apps, including:
    npx create-from-repo \
       -b develop \
       -s \
-      git@github.com:lndwn/rtbw-scaf.git \
+      git@github.com:lndwn/react-starter-kit.git \
       <dirname> \
    && cd <dirname> \
    && git init
