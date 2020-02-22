@@ -21,8 +21,8 @@ const config: webpack.Configuration = {
     path: path.resolve('./public'),
     publicPath: '/',
     filename: '[name].[hash].js',
-    chunkFilename: '[name].[hash].js',
-    sourceMapFilename: '[name].[hash].js.map',
+    chunkFilename: '[name].[chunkhash].js',
+    sourceMapFilename: '[file].map',
   },
   optimization: {
     splitChunks: {
