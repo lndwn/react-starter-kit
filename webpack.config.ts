@@ -10,6 +10,7 @@ import { SVGRTemplate } from './svgr.config'
 const gitRevision = new GitRevisionPlugin()
 
 const config: webpack.Configuration = {
+  context: path.resolve(__dirname, 'src'),
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.svg', '.png'],
   },
@@ -80,6 +81,7 @@ const config: webpack.Configuration = {
   },
   devServer: {
     contentBase: path.resolve('./public'),
+    writeToDisk: true,
     compress: true,
     hot: true,
     historyApiFallback: true,
