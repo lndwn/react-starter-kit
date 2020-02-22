@@ -105,11 +105,11 @@ const config: webpack.Configuration = {
     new ManifestPlugin(),
     new HtmlWebpackPlugin({
       title: 'React, TypeScript, Webpack Scaffold',
-      template: path.resolve('./src/static/index.html'),
+      template: path.resolve('./src/index.html'),
       minify: {
         collapseWhitespace: true,
       },
-      favicon: path.resolve('./src/static/assets/favicon.ico'),
+      favicon: path.resolve('./src/assets/favicon.ico'),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.EnvironmentPlugin({
