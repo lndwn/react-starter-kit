@@ -1,18 +1,10 @@
-export const theme = {
+export const defaultTheme = {
   borders: {},
   borderStyles: {},
   borderWidths: {},
   colors: {
-    bg: {
-      primary: '#ffffff',
-      secondary: '#f8f8f8',
-      tertiary: '#ffffff',
-    },
-    text: {
-      primary: '#000000',
-      secondary: '#404040',
-      tertiary: '#808080',
-    },
+    bg: ['#ffffff', '#f8f8f8', '#efefef', '#e8e8e8'],
+    text: ['#000000', '#404040', '#808080'],
   },
   fonts: {
     heading: '"Inter", sans-serif',
@@ -51,11 +43,7 @@ export const theme = {
   },
   radii: {},
   shadows: {},
-  // width, height, min-width, max-width, min-height, max-height
   sizes: ['1rem', '2rem', '3rem', '5rem', '8rem', '13rem', '21rem', '34rem'],
-  // margin, margin-top, margin-right, margin-bottom, margin-left,
-  // padding, padding-top, padding-right, padding-bottom, padding-left,
-  // grid-gap, grid-column-gap, grid-row-gap
   space: [
     '0.125rem',
     '0.25rem',
@@ -73,5 +61,13 @@ export const theme = {
     nav: 3,
     draw: 4,
     modal: 5,
+  },
+}
+
+export const darkTheme = {
+  ...defaultTheme,
+  colors: {
+    bg: ['#000000', '#404040', '#808080'],
+    text: ['#ffffff', '#f8f8f8', '#efefef', '#e8e8e8'],
   },
 }

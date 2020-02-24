@@ -1,19 +1,32 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider as StoreProvider } from 'react-redux'
+import { store } from './store/store'
 import { ThemeProvider } from 'styled-components'
-import { theme } from './theme/theme'
+import { defaultTheme, darkTheme } from './theme/theme'
+import { usePrefersColorScheme } from './utils/usePrefersColorScheme'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { GlobalStyle } from './styles/global-style'
 import { App } from './app'
 
-const Root = () => (
-  <ThemeProvider theme={theme}>
-    <App />
-    <GlobalStyle />
-  </ThemeProvider>
-)
+const Root = () => {
+  const preferedScheme = usePrefersColorScheme(['light', 'dark'], 'dark')
+
+  return (
+    // <StoreProvider store={store}>
+    <ThemeProvider
+      theme={preferedScheme === 'light' ? defaultTheme : darkTheme}>
+      <Router>
+        <App />
+      </Router>
+      <GlobalStyle />
+    </ThemeProvider>
+    // </StoreProvider>
+  )
+}
 
 ReactDOM.render(<Root />, document.getElementById('root'))
 
-if (module.hot) {
+if (process.env.NODE_ENV === 'development' && module.hot) {
   module.hot.accept()
 }
