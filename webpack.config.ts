@@ -66,6 +66,19 @@ const config: webpack.Configuration = {
         ],
       },
       {
+        test: /\.(png|jpeg|woff2|woff|otf|ttf)$/i,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets',
+            },
+          },
+        ],
+      },
+      {
         enforce: 'pre',
         test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,

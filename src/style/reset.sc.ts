@@ -1,9 +1,10 @@
-import { createGlobalStyle, css } from 'styled-components'
+import { css } from 'styled-components'
 
 /**
  * css reset by @hankchizljaw
+ * https://hankchizljaw.com/wrote/a-modern-css-reset/
  */
-const reset = css`
+export const reset = css`
   *,
   *::before,
   *::after {
@@ -71,38 +72,5 @@ const reset = css`
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
-  }
-`
-
-/**
- * inter font family by @rsms
- */
-const fontFamily = css`
-  @import url('https://rsms.me/inter/inter.css');
-`
-
-export const GlobalStyle = createGlobalStyle`
-  ${reset}
-
-  ${fontFamily}
-
-  html { 
-    font-family: 'Inter', sans-serif;
-    color: ${({ theme }) => theme.colors.text[0]};
-    line-height: ${({ theme }) => theme.lineHeights.copy};
-    background-color: ${({ theme }) => theme.colors.bg[0]}
-  }
-
-  h1 {
-    color: ${({ theme }) => theme.colors.text[1]};
-    line-height: ${({ theme }) => theme.lineHeights.heading};
-  }
-  h2 {
-    color: ${({ theme }) => theme.colors.text[2]};
-    line-height: ${({ theme }) => theme.lineHeights.heading};
-  }
-  h3 {
-    color: ${({ theme }) => theme.colors.text[2]};
-    line-height: ${({ theme }) => theme.lineHeights.smallHeading};
   }
 `

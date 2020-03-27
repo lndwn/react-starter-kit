@@ -2,22 +2,20 @@
 
 A project scaffold for React apps, including:
 
-- React with Hot Module Replacement  
-  This facilitates quick interation on your app by instantly reloading just the sections of your code that has changed.
 - Styled Components  
   Styled Components is a CSS-in-JS library that allows you to easily style your React components with valid CSS.
 - Babel  
   Babel allows using the latest JavaScript (and TypeScript) features by rewriting your code to make it compatible with older browsers.
 - TypeScript  
   TypeScript is a superset of JavaScript, providing useful features for defining how your app should work. It allows you to strictly define function parameters and what they return, and providing feedback in your development environment (e.g. VS Code).
-- Webpack for bundling  
+- Webpack for bundling with Hot Module Replacement
   Webpack begins with your program's entry file, and crawls through building a tree of all the other code you use from there. It then processes it based on the provided configuration, ultimately leading to the JavaScript bundle and assets output into a dedicated directory.
 - Jest  
-  Jest will run files named like `my-component.**test**.tsx` and provide the results on the command line.
+  Jest will run test files named like `my-component.**test**.tsx` and provide the results on the command line.
 - Prettier  
   Prettier automatically formats your code so you don't have to!
 - TSLint  
-  TSLint will give you feedback in the IDE and throw errors during build if your code has errors.
+  TSLint will give you feedback in the IDE and throw errors during build if your code has errors. Although deprecated in favour of ESLint, ESLint is a huge pain in the ass to get working correctly with TypeScript.
 
 **This is still a work-in-progress and may still include some configuration problems.**
 
