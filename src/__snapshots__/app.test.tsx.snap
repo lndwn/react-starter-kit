@@ -2,6 +2,21 @@
 
 exports[`index.tsx renders with theme context 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c1 {
   color: #808080;
 }
 
@@ -9,9 +24,13 @@ exports[`index.tsx renders with theme context 1`] = `
 
 }
 
-<h1
-  class="c0"
+<div
+  class="boxsc__Box-sc-1g017hi-0 c0"
 >
-  Hello World
-</h1>
+  <h1
+    class="c1"
+  >
+    Hello World
+  </h1>
+</div>
 `;

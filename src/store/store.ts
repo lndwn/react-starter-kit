@@ -34,4 +34,5 @@ export const store = configureStore({
 })
 
 store.subscribe(throttle(() => saveState({ ...store.getState() }), 2000))
+
 export type AppDispatch = typeof store.dispatch
