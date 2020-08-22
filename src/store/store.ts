@@ -1,22 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit'
 import appReducer, { AppState } from './app.reducer'
-import throttle from 'lodash.throttle'
+import { throttle } from 'lodash'
 import { name } from '../../package.json'
 
-export const loadState = () => {
+export const loadState = (): AppState | undefined => {
   try {
     const serializedState = localStorage.getItem(`${name}store`)
-    if (serializedState === null) return undefined
+    if (serializedState === null) return
     return JSON.parse(serializedState)
   } catch (error) {
     // tslint:disable no-console
     console.error(error)
     // tslint:enable no-console
-    return undefined
+    return
   }
 }
 
-export const saveState = (state: AppState) => {
+export const saveState = (state: AppState): void => {
   try {
     const serializedState = JSON.stringify(state)
     localStorage.setItem(`${name}store`, serializedState)
@@ -24,7 +24,6 @@ export const saveState = (state: AppState) => {
     // tslint:disable no-console
     console.error(error)
     // tslint:enable no-console
-    return state
   }
 }
 

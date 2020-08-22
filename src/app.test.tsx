@@ -1,17 +1,7 @@
-import React from 'react'
 import { render } from '@testing-library/react'
-import { App } from './app'
-import { TestFrame } from './utils/test-frame'
+import ue from '@testing-library/user-event'
+import fm from 'fetch-mock'
 
-describe('index.tsx', () => {
-  it('renders with theme context', () => {
-    const { container, getByText } = render(
-      <TestFrame>
-        <App />
-      </TestFrame>
-    )
-
-    expect(getByText(/hello world/i))
-    expect(container.firstChild).toMatchSnapshot()
-  })
+describe('app', () => {
+  it.todo('your first app test')
 })

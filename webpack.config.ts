@@ -9,9 +9,10 @@ import { SVGRTemplate } from './svgr.config'
 
 const gitRevision = new GitRevisionPlugin()
 
-const config: webpack.Configuration = {
+export default {
   context: path.resolve(__dirname, 'src'),
   resolve: {
+    modules: [path.resolve('./src'), path.resolve('./node_modules')],
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.svg', '.png'],
   },
   entry: {
@@ -33,9 +34,9 @@ const config: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx|js|jsx)$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: [{ loader: 'babel-loader' }],
       },
       {
         test: /icon-.+\.svg$/,
@@ -136,5 +137,3 @@ const config: webpack.Configuration = {
     // new BundleAnalyzerPlugin(),
   ],
 }
-
-export default config

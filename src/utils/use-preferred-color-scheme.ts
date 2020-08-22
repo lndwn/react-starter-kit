@@ -3,12 +3,11 @@ import React from 'react'
 export type ColorScheme = 'light' | 'dark' | 'no-preference'
 
 /**
- * usePrefersColorScheme
  * @param {ColorScheme[]} availableSchemes the schemes available in your theme
  * @param {ColorScheme} noPreferenceScheme the scheme to use if no preferences available
  * @returns {ColorScheme} the best match of the availableSchemes
  */
-export const usePrefersColorScheme = (
+export const userPreferredColorScheme = (
   availableSchemes: ColorScheme[],
   noPreferenceScheme: ColorScheme
 ) => {
@@ -18,11 +17,11 @@ export const usePrefersColorScheme = (
 
   function handleMatchMediaChange(event: MediaQueryListEvent) {
     if (event.matches) {
-      const scheme =
-        (event.media.match(
-          /(?<=prefers-color-scheme:\s)(\w+?-\w+|\w+)/
-        )?.[0] as ColorScheme) ?? 'no-preference'
-      setBestMatch(scheme)
+      const match = event.media.match(
+        /(?<=prefers-color-scheme:\s)(\w+?-\w+|\w+)/
+      )
+      const [scheme] = match ?? ['no-preference']
+      setBestMatch(scheme as ColorScheme)
     }
   }
 

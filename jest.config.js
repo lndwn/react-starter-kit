@@ -1,6 +1,8 @@
 const { defaults } = require('jest-config')
+const { name } = require('./package.json')
 
 module.exports = {
+  displayName: name,
   preset: 'ts-jest',
   globals: {
     'ts-jest': {

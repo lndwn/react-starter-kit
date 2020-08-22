@@ -1,4 +1,5 @@
-export const SVGRTemplate = (
+//  @ts-nocheck
+const SVGRTemplate = (
   { template },
   opts,
   { imports, componentName, props, jsx, exports }
@@ -10,3 +11,5 @@ export const SVGRTemplate = (
     export default ${componentName};
   `
 }
+
+export { SVGRTemplate }

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`index.tsx renders with theme context 1`] = `
+exports[`root renders with theme context 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -16,8 +16,15 @@ exports[`index.tsx renders with theme context 1`] = `
   justify-content: center;
 }
 
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c1 {
-  color: #808080;
+  color: #efefef;
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -32,5 +39,10 @@ exports[`index.tsx renders with theme context 1`] = `
   >
     Hello World
   </h1>
+  <div
+    class="boxsc__Box-sc-1g017hi-0 c2"
+  >
+    <test-file-stub />
+  </div>
 </div>
 `;
