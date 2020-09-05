@@ -2,20 +2,20 @@
 
 A project scaffold for React apps, including:
 
-- Styled Components  
-  Styled Components is a CSS-in-JS library that allows you to easily style your React components with valid CSS.
+- Styled Components & Styled System  
+  Styled Components is a CSS-in-JS library that allows you to easily style your React components with valid CSS directly inside your component JavaScript.
 - Babel  
   Babel allows using the latest JavaScript (and TypeScript) features by rewriting your code to make it compatible with older browsers.
 - TypeScript  
-  TypeScript is a superset of JavaScript, providing useful features for defining how your app should work. It allows you to strictly define function parameters and what they return, and providing feedback in your development environment (e.g. VS Code).
-- Webpack for bundling with Hot Module Replacement
-  Webpack begins with your program's entry file, and crawls through building a tree of all the other code you use from there. It then processes it based on the provided configuration, ultimately leading to the JavaScript bundle and assets output into a dedicated directory.
+  TypeScript is a superset of JavaScript, providing useful features for defining how your app should work. It allows you to strictly define variable types, function parameters and return values, and provides feedback in your development environment (e.g. VS Code).
+- Webpack  
+  Webpack begins with your program's entry file and crawls through it building a tree of all the other code you use from there. It then processes it based on the provided configuration, ultimately leading to the JavaScript bundle and assets output into a dedicated directory. It also provides HMR (Hot Module Replacement), which replaces only the changed files dynamically as your develop, greatly speeding up the development experience for larger apps/builds.
 - Jest  
   Jest will run test files named like `my-component.**test**.tsx` and provide the results on the command line.
 - Prettier  
   Prettier automatically formats your code so you don't have to!
 - TSLint  
-  TSLint will give you feedback in the IDE and throw errors during build if your code has errors. Although deprecated in favour of ESLint, ESLint is a huge pain in the ass to get working correctly with TypeScript.
+  TSLint will give you additional feedback in the IDE and throw errors during build if your code has errors. Although deprecated in favour of ESLint, ESLint is a huge pain in the ass to get working correctly with TypeScript. By and large, TypeScript provides decent linting, but TSLint allows you to set more specific rules for your code style.
 
 **This is still a work-in-progress and may still include some configuration problems.**
 
@@ -36,7 +36,7 @@ A project scaffold for React apps, including:
    ```
 
 1. Download this repository as a new project  
-    `npx` allows you to execute a remote `npm` package, without having to install it locally on your machine.
+    `npx` allows you to execute a remote `npm` package, without having to install it locally on your machine first.
 
    ```bash
    npx create-from-repo \
