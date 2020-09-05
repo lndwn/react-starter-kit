@@ -2,7 +2,6 @@ import webpack from 'webpack'
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
-import BundleAnalyzerPlugin from 'webpack-bundle-analyzer'
 import GitRevisionPlugin from 'git-revision-webpack-plugin'
 import ManifestPlugin from 'webpack-manifest-plugin'
 import { SVGRTemplate } from './svgr.config'
@@ -103,16 +102,9 @@ export default {
     port: 3000,
   },
   stats: {
-    // all: true,
-    // assets: false,
-    // assetsSort: '!size',
-    // builtAt: true,
-    // cached: true,
-    // children: false,
-    // chunks: true,
-    // entrypoints: false,
-    // modules: true,
-    // version: false,
+    assets: false,
+    children: false,
+    modules: false,
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -134,6 +126,5 @@ export default {
       BRANCH: gitRevision.branch(),
       BROWSERSLIST_ENV: 'modern',
     }),
-    // new BundleAnalyzerPlugin(),
   ],
 }
