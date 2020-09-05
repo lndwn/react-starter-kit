@@ -1,6 +1,5 @@
 {
   "name": "react-starter-kit",
-  "version": "0.0.1",
   "description": "Scaffold for React apps with TypeScript, Webpack, Babel, Jest, Styled Components",
   "license": "MIT",
   "author": "Lynden Noye <lynden@lndw.design>",
@@ -10,7 +9,9 @@
     "lint": "tsc --noEmit && tslint -c tslint.json -p tsconfig.json",
     "start": "webpack-dev-server",
     "test": "jest",
-    "postinstall": "rm -rf ./node_modules/@types/react-native"
+    "test:watch": "jest --watch",
+    "postinstall": "rm -rf ./node_modules/@types/react-native",
+    "release": "standard-version"
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
@@ -76,6 +77,7 @@
     "prettier": "^2.0.5",
     "redux-mock-store": "^1.5.4",
     "source-map-loader": "^1.0.2",
+    "standard-version": "^9.0.0",
     "ts-jest": "^26.2.0",
     "ts-loader": "^8.0.2",
     "ts-node": "^9.0.0",
