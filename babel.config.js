@@ -1,7 +1,12 @@
 const presets = [
   '@babel/preset-react',
   '@babel/preset-typescript',
-  '@babel/preset-env',
+  [
+    '@babel/preset-env',
+    {
+      targets: process.env.NODE_ENV,
+    },
+  ],
 ]
 const plugins = [
   '@babel/plugin-transform-runtime',
