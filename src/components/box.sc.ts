@@ -11,11 +11,20 @@ import {
   FlexProps as SSFlexProps,
   flexbox,
   FlexboxProps,
+  position,
+  PositionProps,
+  overflow,
+  OverflowProps,
 } from 'styled-system'
 
-const boxStyleProps = compose(space, color, layout)
+const boxStyleProps = compose(space, color, layout, overflow, position)
 
-interface BoxProps extends SpaceProps, ColorProps, LayoutProps {}
+interface BoxProps
+  extends SpaceProps,
+    ColorProps,
+    LayoutProps,
+    OverflowProps,
+    PositionProps {}
 export const Box = styled.div<BoxProps>`
   ${boxStyleProps}
 `
@@ -23,7 +32,8 @@ export const Box = styled.div<BoxProps>`
 const flexStyleProps = compose(flexbox, flex)
 
 interface FlexProps extends BoxProps, FlexboxProps, SSFlexProps {}
-export const Flex = styled(Box)<FlexProps>`
+export const Flex = styled.div<FlexProps>`
   display: flex;
+  ${boxStyleProps}
   ${flexStyleProps}
 `
