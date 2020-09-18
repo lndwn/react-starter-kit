@@ -1,6 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import { fontFaceInter } from './font-face-inter.sc'
-import { openColor } from './open-color.sc'
 import { reset } from './reset.sc'
 
 export const GlobalStyle = createGlobalStyle`
@@ -8,10 +6,6 @@ export const GlobalStyle = createGlobalStyle`
   /* outline: 1px solid #f0f; */
 }
   ${reset}
-
-  ${fontFaceInter}
-
-  ${openColor}
 
   html { 
     font-family: 'Inter', sans-serif;

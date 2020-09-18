@@ -66,6 +66,10 @@ export default {
         ],
       },
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.(png|jpeg|woff2|woff|otf|ttf)$/i,
         exclude: /node_modules/,
         use: [

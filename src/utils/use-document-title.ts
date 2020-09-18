@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 /**
  * simple hook allowing setting the html document title

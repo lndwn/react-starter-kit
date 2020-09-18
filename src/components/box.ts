@@ -29,11 +29,15 @@ export const Box = styled.div<BoxProps>`
   ${boxStyleProps}
 `
 
-const flexStyleProps = compose(flexbox, flex)
+const flexStyleProps = compose(flexbox, flex, boxStyleProps)
 
 interface FlexProps extends BoxProps, FlexboxProps, SSFlexProps {}
 export const Flex = styled.div<FlexProps>`
   display: flex;
-  ${boxStyleProps}
   ${flexStyleProps}
+`
+
+export const Centered = styled(Flex)`
+  align-items: center;
+  justify-content: center;
 `

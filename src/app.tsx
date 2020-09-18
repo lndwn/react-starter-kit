@@ -1,23 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Flex } from './components'
-import { IconIconsSmall } from 'assets'
+import * as React from 'react'
+import { Box, Centered, Flex, Icon } from './components'
 
-const Heading = styled.h1`
-  color: ${(props) => props.theme.colors.text[2]};
-`
-
-interface IAppProps {
-  heading?: string
-}
-
-export const App = ({ heading = 'Hello World' }: IAppProps) => {
+export const App = () => {
   return (
-    <Flex alignItems="center" justifyContent="center">
-      <Heading>{heading}</Heading>
-      <Flex>
-        <IconIconsSmall />
+    <Centered width="100vw" height="100vh">
+      <Flex alignItems="center">
+        <Icon size="4" glyph="IconCheck" />
+        <Box mr="1ch" />
+        Hello World
       </Flex>
-    </Flex>
+    </Centered>
   )
 }

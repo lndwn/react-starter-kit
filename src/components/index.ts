@@ -1,1 +1,3 @@
-export * from './box.sc'
+export * from './box'
+export * from './ui-text'
+export * from './icon'
