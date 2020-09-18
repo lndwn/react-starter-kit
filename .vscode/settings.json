@@ -16,7 +16,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "tslint.configFile": "tslint.json",
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -25,9 +24,10 @@
     "**/.DS_Store": true,
     "**/node_modules/**": true
   },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true
-  },
   "explorer.sortOrder": "type",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.alwaysShowStatus": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
 }

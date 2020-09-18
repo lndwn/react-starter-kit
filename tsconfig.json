@@ -12,12 +12,7 @@
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "baseUrl": "./src",
-    "plugins": [
-      {
-        "name": "typescript-tslint-plugin"
-      }
-    ]
+    "baseUrl": "./src"
   },
-  "include": ["./"]
+  "include": ["./", ".eslintrc.js"]
 }

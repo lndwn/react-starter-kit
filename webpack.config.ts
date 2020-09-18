@@ -82,7 +82,7 @@ export default {
         enforce: 'pre',
         test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
-        use: ['tslint-loader'],
+        loader: 'eslint-loader',
       },
       {
         enforce: 'pre',
