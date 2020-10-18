@@ -1,7 +1,8 @@
-interface SvgrComponent
-  extends React.StatelessComponent<React.SVGAttributes<SVGElement>> {}
+type SvgrComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>
 
 declare module '*.svg' {
-  const value: SvgrComponent
+  const value: string
   export default value
+
+  export const ReactComponent: SvgrComponent
 }

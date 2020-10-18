@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "moduleResolution": "node",
-    "allowJs": false,
+    "allowJs": true,
     "checkJs": false,
     "noEmit": true,
     "strict": true,
@@ -14,5 +14,6 @@
     "resolveJsonModule": true,
     "baseUrl": "./src"
   },
-  "include": ["./", ".eslintrc.js"]
+  "include": ["./"],
+  "exclude": ["node_modules", "public"]
 }

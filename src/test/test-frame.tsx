@@ -6,7 +6,7 @@ import { ThemeProvider, DefaultTheme } from 'styled-components'
 import { defaultTheme, darkTheme } from '../theme/theme'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory, MemoryHistory } from 'history'
-import { AppState } from '../store/app.reducer'
+import { AppState } from '../store/root-reducer'
 import { GlobalStyle } from '../style/global-style.sc'
 
 const initialState = {} as AppState

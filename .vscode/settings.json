@@ -7,7 +7,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "typescript.validate.enable": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
@@ -17,13 +16,9 @@
     "editor.formatOnSave": true
   },
   "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
     "**/node_modules/**": true
   },
+  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
   "explorer.sortOrder": "type",
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.alwaysShowStatus": true,

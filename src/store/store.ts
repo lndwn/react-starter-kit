@@ -1,17 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
-import appReducer, { AppState } from './app.reducer'
+import rootReducer, { AppState } from './root-reducer'
 import { throttle } from 'lodash'
-import { name } from '../../package.json'
+import warning from 'tiny-warning'
+
+const itemName = `${process.env.npm_package_name}-${process.env.npm_package_version}`
 
 export const loadState = (): AppState | undefined => {
   try {
-    const serializedState = localStorage.getItem(`${name}store`)
+    const serializedState = localStorage.getItem(itemName)
     if (serializedState === null) return
     return JSON.parse(serializedState)
   } catch (error) {
-    // tslint:disable no-console
-    console.error(error)
-    // tslint:enable no-console
+    warning(true, error)
     return
   }
 }
@@ -19,17 +19,15 @@ export const loadState = (): AppState | undefined => {
 export const saveState = (state: AppState): void => {
   try {
     const serializedState = JSON.stringify(state)
-    localStorage.setItem(`${name}store`, serializedState)
+    localStorage.setItem(itemName, serializedState)
   } catch (error) {
-    // tslint:disable no-console
-    console.error(error)
-    // tslint:enable no-console
+    warning(true, error)
   }
 }
 
 export const store = configureStore({
   preloadedState: loadState(),
-  reducer: appReducer,
+  reducer: rootReducer,
 })
 
 store.subscribe(throttle(() => saveState({ ...store.getState() }), 2000))

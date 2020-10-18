@@ -1,12 +1,14 @@
 import webpack from 'webpack'
 import path from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import HtmlPlugin from 'html-webpack-plugin'
+import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin'
 import GitRevisionPlugin from 'git-revision-webpack-plugin'
 import ManifestPlugin from 'webpack-manifest-plugin'
-import { SVGRTemplate } from './svgr.config'
+import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 
 const gitRevision = new GitRevisionPlugin()
+
+const isDevelopment = process.env.NODE_ENV !== 'production'
 
 export default {
   context: path.resolve(__dirname, 'src'),
@@ -33,37 +35,25 @@ export default {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.(ts|tsx|js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['eslint-loader'],
+      },
+      {
+        enforce: 'pre',
+        test: /\.(ts|tsx|js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['source-map-loader'],
+      },
+      {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: [{ loader: 'babel-loader' }],
+        use: ['babel-loader'],
       },
       {
-        test: /icon-.+\.svg$/,
-        use: [
-          { loader: 'babel-loader' },
-          {
-            loader: '@svgr/webpack',
-            options: {
-              template: SVGRTemplate,
-              babel: false,
-              icon: true,
-              replaceAttrValues: { '#000': 'currentColor' },
-              prettierConfig: './prettier.config.js',
-            },
-          },
-        ],
-      },
-      {
-        test: [/\.png$/, /\.svg$/],
-        exclude: [/icon-.+\.svg$/],
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
+        test: /\.svg(\?.+)?$/,
+        use: ['@svgr/webpack', 'url-loader'],
       },
       {
         test: /\.css$/,
@@ -82,18 +72,6 @@ export default {
           },
         ],
       },
-      {
-        enforce: 'pre',
-        test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-      },
-      {
-        enforce: 'pre',
-        test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['source-map-loader'],
-      },
     ],
   },
   devServer: {
@@ -111,9 +89,10 @@ export default {
     modules: false,
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanPlugin(),
+    isDevelopment && new ReactRefreshPlugin(),
     new ManifestPlugin(),
-    new HtmlWebpackPlugin({
+    new HtmlPlugin({
       title: 'React, TypeScript, Webpack Scaffold',
       template: path.resolve('./src/index.html'),
       minify: {
@@ -121,14 +100,14 @@ export default {
       },
       favicon: path.resolve('./src/assets/favicon.ico'),
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    gitRevision,
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
       SENTRY_RELEASE: gitRevision.commithash(),
       VERSION: gitRevision.version(),
       COMMITHASH: gitRevision.commithash(),
       BRANCH: gitRevision.branch(),
-      BROWSERSLIST_ENV: 'modern',
+      BROWSERSLIST_ENV: 'development',
     }),
-  ],
+  ].filter(Boolean),
 }

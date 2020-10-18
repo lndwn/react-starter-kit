@@ -22,12 +22,19 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
-    'no-console': 'warn',
+    'no-console': [
+      'warn',
+      { allow: ['warn', 'info', 'error', 'group', 'groupEnd'] },
+    ],
     'no-eval': 'error',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
+    'react/display-name': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
+    'prettier/prettier': 'off',
   },
+  ignorePatterns: ['public/**'],
 }

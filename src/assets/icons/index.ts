@@ -1,1 +1,1 @@
-export { default as IconCheck } from './icon-check.svg'
+export { ReactComponent as IconCheck } from './icon-check.svg'
