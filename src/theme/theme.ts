@@ -3,8 +3,11 @@ export const defaultTheme = {
   borderStyles: {},
   borderWidths: {},
   colors: {
-    bg: ['#ffffff', '#f8f8f8', '#efefef', '#e8e8e8'],
-    text: ['#000000', '#404040', '#808080'],
+    bg: ['#ffffff', '#eeeeee', '#dddddd', '#cccccc', '#bbbbbb'],
+    text: ['#000000', '#111111', '#222222', '#333333', '#444444'],
+    accent: '#32cd32',
+    success: '#32cd32',
+    error: '#ff4500',
   },
   fonts: {
     heading: '"Inter", sans-serif',
@@ -41,7 +44,14 @@ export const defaultTheme = {
     smallHeading: 1.25,
     copy: 1.5,
   },
-  radii: {},
+  radii: {
+    full: '999px',
+    nano: '0.125rem',
+    micro: '0.25rem',
+    small: '0.5rem',
+    medium: '0.75rem',
+    large: '1rem',
+  },
   shadows: {},
   sizes: ['1rem', '2rem', '3rem', '5rem', '8rem', '13rem', '21rem', '34rem'],
   space: [
@@ -54,6 +64,10 @@ export const defaultTheme = {
     '3rem',
     '5rem',
     '8rem',
+    '-1rem',
+    '-0.5rem',
+    '-0.25rem',
+    '-0.125rem',
   ],
   zIndices: {
     canvas: 1,
@@ -67,7 +81,8 @@ export const defaultTheme = {
 export const darkTheme = {
   ...defaultTheme,
   colors: {
-    bg: ['#000000', '#404040', '#808080'],
-    text: ['#ffffff', '#f8f8f8', '#efefef', '#e8e8e8'],
+    ...defaultTheme.colors,
+    bg: defaultTheme.colors.text,
+    text: defaultTheme.colors.bg,
   },
 }

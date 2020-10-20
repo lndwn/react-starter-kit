@@ -5,6 +5,8 @@ import {
   SpaceProps,
   color,
   ColorProps,
+  border,
+  BorderProps,
   layout,
   LayoutProps,
   flex,
@@ -17,11 +19,12 @@ import {
   OverflowProps,
 } from 'styled-system'
 
-const boxStyleProps = compose(space, color, layout, overflow, position)
+const boxStyleProps = compose(space, border, color, layout, overflow, position)
 
 interface BoxProps
   extends SpaceProps,
     ColorProps,
+    BorderProps,
     LayoutProps,
     OverflowProps,
     PositionProps {}
