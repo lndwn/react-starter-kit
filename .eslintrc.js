@@ -24,7 +24,9 @@ module.exports = {
   rules: {
     'no-console': [
       'warn',
-      { allow: ['warn', 'info', 'error', 'group', 'groupEnd'] },
+      {
+        allow: ['warn', 'info', 'error', 'group', 'groupEnd', 'groupCollapsed'],
+      },
     ],
     'no-eval': 'error',
     '@typescript-eslint/explicit-function-return-type': 'off',

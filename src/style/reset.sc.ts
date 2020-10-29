@@ -11,19 +11,12 @@ export const reset = css`
     box-sizing: border-box;
   }
 
-  ul[class],
-  ol[class] {
-    padding: 0;
-  }
-
   body,
   h1,
   h2,
   h3,
   h4,
   p,
-  ul[class],
-  ol[class],
   li,
   figure,
   figcaption,
@@ -38,11 +31,6 @@ export const reset = css`
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
-  }
-
-  ul[class],
-  ol[class] {
-    list-style: none;
   }
 
   a:not([class]) {

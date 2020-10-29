@@ -1,10 +1,9 @@
-import { combineReducers, createReducer } from '@reduxjs/toolkit'
-
-const dummyReducer = createReducer(0, {})
+import { combineReducers } from '@reduxjs/toolkit'
+import { colorSchemeReducer } from './theme'
 
 const rootReducer = combineReducers({
-  dummy: dummyReducer,
+  colorScheme: colorSchemeReducer,
 })
-export type AppState = ReturnType<typeof rootReducer>
 
+export type AppState = ReturnType<typeof rootReducer>
 export default rootReducer

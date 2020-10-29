@@ -6,7 +6,6 @@ import { focusStyles } from './focus.css'
 import { hoverStyles } from './hover.css'
 import { Box } from 'components/box'
 import { UIText } from 'components/ui-text'
-import { useSpring } from 'react-spring'
 
 const Input = styled.input`
   ${colorStyles}
@@ -24,6 +23,10 @@ const Input = styled.input`
   --color: ${({ theme }) => theme.colors.text[0]};
 
   ::placeholder {
+    color: ${({ theme }) => theme.colors.text[0]}80;
+  }
+
+  :disabled::placeholder {
     color: var(--color-disabled);
   }
 
@@ -31,6 +34,9 @@ const Input = styled.input`
   font-weight: ${({ theme }) => theme.fontWeights.medium};
   caret-color: ${({ theme }) => theme.colors.accent};
   width: 100%;
+
+  transition: border-color 150ms ease, color 150ms ease,
+    background-color 150ms ease;
 `
 
 interface TextInputProps {
@@ -44,6 +50,7 @@ interface TextInputProps {
 }
 
 export const TextInput = (props: TextInputProps) => {
+  // TODO: navigation
   const { label, ...rest } = props
   return (
     <Box>

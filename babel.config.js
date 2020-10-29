@@ -22,6 +22,6 @@ module.exports = {
     'babel-plugin-styled-components',
     'babel-plugin-annotate-pure-calls',
     'babel-plugin-dev-expression',
-    isDevelopment && 'react-refresh/babel',
+    // isDevelopment && 'react-refresh/babel',
   ].filter(Boolean),
 }

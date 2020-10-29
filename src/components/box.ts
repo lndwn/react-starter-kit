@@ -17,6 +17,8 @@ import {
   PositionProps,
   overflow,
   OverflowProps,
+  grid,
+  GridProps as SSGridProps,
 } from 'styled-system'
 
 const boxStyleProps = compose(space, border, color, layout, overflow, position)
@@ -43,4 +45,11 @@ export const Flex = styled.div<FlexProps>`
 export const Centered = styled(Flex)`
   align-items: center;
   justify-content: center;
+`
+
+const gridStyleProps = compose(flexStyleProps, grid)
+interface GridProps extends FlexProps, SSGridProps {}
+export const Grid = styled.div<GridProps>`
+  display: grid;
+  ${gridStyleProps}
 `

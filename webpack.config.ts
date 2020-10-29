@@ -90,7 +90,7 @@ export default {
   },
   plugins: [
     new CleanPlugin(),
-    isDevelopment && new ReactRefreshPlugin(),
+    // isDevelopment && new ReactRefreshPlugin(),
     new ManifestPlugin(),
     new HtmlPlugin({
       title: 'React, TypeScript, Webpack Scaffold',

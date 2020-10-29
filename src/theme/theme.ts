@@ -1,10 +1,13 @@
 export const defaultTheme = {
+  scheme: 'light',
   borders: {},
   borderStyles: {},
   borderWidths: {},
   colors: {
     bg: ['#ffffff', '#eeeeee', '#dddddd', '#cccccc', '#bbbbbb'],
+    whites: ['#ffffff', '#eeeeee', '#dddddd', '#cccccc', '#bbbbbb'],
     text: ['#000000', '#111111', '#222222', '#333333', '#444444'],
+    blacks: ['#000000', '#111111', '#222222', '#333333', '#444444'],
     accent: '#32cd32',
     success: '#32cd32',
     error: '#ff4500',
@@ -52,7 +55,13 @@ export const defaultTheme = {
     medium: '0.75rem',
     large: '1rem',
   },
-  shadows: {},
+  shadows: {
+    canvas: '0 2px 8px rgba(0,0,0,0.1)',
+    popover: '0 3px 6px 2px rgba(0,0,0,0.15)',
+    nav: '0 6px 8px 3px rgba(0,0,0,0.20)',
+    draw: '0 8px 12px 4px rgba(0,0,0,0.25)',
+    modal: '0 12px 16px 6px rgba(0, 0, 0, 0.3)',
+  },
   sizes: ['1rem', '2rem', '3rem', '5rem', '8rem', '13rem', '21rem', '34rem'],
   space: [
     '0.125rem',
@@ -70,19 +79,20 @@ export const defaultTheme = {
     '-0.125rem',
   ],
   zIndices: {
-    canvas: 1,
-    popover: 2,
-    nav: 3,
-    draw: 4,
-    modal: 5,
+    canvas: 0,
+    popover: 100,
+    nav: 300,
+    draw: 400,
+    modal: 500,
   },
 }
 
 export const darkTheme = {
   ...defaultTheme,
+  scheme: 'dark',
   colors: {
     ...defaultTheme.colors,
-    bg: defaultTheme.colors.text,
-    text: defaultTheme.colors.bg,
+    bg: [...defaultTheme.colors.text],
+    text: [...defaultTheme.colors.bg],
   },
 }

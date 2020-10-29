@@ -3,10 +3,16 @@ import { shapeStyles } from './shape.css'
 import { focusStyles } from './focus.css'
 import { colorStyles } from './colors.css'
 import { hoverStyles } from './hover.css'
-import { SpaceProps, compose, space } from 'styled-system'
+import {
+  SpaceProps,
+  compose,
+  space,
+  FlexboxProps,
+  flexbox,
+} from 'styled-system'
 
-const buttonStyleProps = compose(space)
-interface ButtonProps extends SpaceProps {}
+const buttonStyleProps = compose(space, flexbox)
+interface ButtonProps extends SpaceProps, FlexboxProps {}
 
 export const Button = styled.button<ButtonProps>`
   cursor: pointer;
@@ -21,7 +27,9 @@ export const Button = styled.button<ButtonProps>`
   ${focusStyles}
   ${shapeStyles}
   ${hoverStyles}
-  ${buttonStyleProps}
+  & {
+    ${buttonStyleProps}
+  }
 
   --background-color-active: ${({ theme }) => theme.colors.bg[2]};
   --background-color-disabled: transparent;
@@ -41,6 +49,13 @@ export const DefaultButton = styled(Button)`
   --border-color: transparent;
   --box-shadow-color-focus: ${({ theme }) => theme.colors.bg[3]};
   --color: ${({ theme }) => theme.colors.text[0]};
+`
+
+export const IconButton = styled(DefaultButton)`
+  width: ${({ theme }) => theme.sizes[1]};
+  padding: 0;
+  justify-content: center;
+  border-radius: ${({ theme }) => theme.radii.full};
 `
 
 export const PrimaryButton = styled(DefaultButton)`
