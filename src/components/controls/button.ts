@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { shapeStyles } from './shape.css'
-import { focusStyles } from './focus.css'
 import { colorStyles } from './colors.css'
-import { hoverStyles } from './hover.css'
 import {
   SpaceProps,
   compose,
@@ -23,13 +21,9 @@ export const Button = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
 
-  ${colorStyles}
-  ${focusStyles}
-  ${shapeStyles}
-  ${hoverStyles}
-  & {
-    ${buttonStyleProps}
-  }
+  ${colorStyles};
+  ${shapeStyles};
+  ${buttonStyleProps};
 
   --background-color-active: ${({ theme }) => theme.colors.bg[2]};
   --background-color-disabled: transparent;

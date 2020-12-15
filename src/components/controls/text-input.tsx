@@ -2,33 +2,23 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { colorStyles } from './colors.css'
 import { shapeStyles } from './shape.css'
-import { focusStyles } from './focus.css'
-import { hoverStyles } from './hover.css'
 import { Box } from 'components/box'
 import { UIText } from 'components/ui-text'
 
 const Input = styled.input`
   ${colorStyles}
-  ${focusStyles}
   ${shapeStyles}
-  ${hoverStyles}
 
+  --background-color: ${({ theme }) => theme.colors.bg[1]};
   --background-color-active: ${({ theme }) => theme.colors.bg[3]};
   --background-color-disabled: ${({ theme }) => theme.colors.bg[1]};
   --background-color-hover: ${({ theme }) => theme.colors.bg[2]};
-  --background-color: ${({ theme }) => theme.colors.bg[1]};
   --border-color: transparent;
   --box-shadow-color-focus: ${({ theme }) => theme.colors.bg[4]};
   --color-disabled: ${({ theme }) => theme.colors.bg[4]};
   --color: ${({ theme }) => theme.colors.text[0]};
-
-  ::placeholder {
-    color: ${({ theme }) => theme.colors.text[0]}80;
-  }
-
-  :disabled::placeholder {
-    color: var(--color-disabled);
-  }
+  --color-placeholder: ${({ theme }) => theme.colors.text[0]}80;
+  --color-placeholder-disabled: ${({ theme }) => theme.colors.text[0]}40;
 
   display: block;
   font-weight: ${({ theme }) => theme.fontWeights.medium};

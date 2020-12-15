@@ -9,8 +9,10 @@ import {
   PrimaryButton,
   DestructiveButton,
   SwitchInput,
+  Button,
 } from 'components'
 import { TextInput } from 'components/controls/text-input'
+import { Checkbox } from 'components/controls/checkbox'
 
 export const Controls = () => {
   const [isChecked1, setIsChecked1] = React.useState(false)
@@ -19,6 +21,14 @@ export const Controls = () => {
   const [isChecked2, setIsChecked2] = React.useState(false)
   const handleCheckbox2Change = (event: React.ChangeEvent<HTMLInputElement>) =>
     setIsChecked2(event.target.checked)
+
+  const [isChecked3, setIsChecked3] = React.useState(false)
+  const handleCheckbox3Change = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    console.log(event)
+    setIsChecked3(event.target.checked)
+  }
 
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false)
   const handleDemoRadioChange = (
@@ -90,6 +100,19 @@ export const Controls = () => {
           disabled={isDisabled}
           checked={isOn}
         />
+        <Checkbox
+          id="new-checkbox"
+          name="neue"
+          value="asdf"
+          onChange={handleCheckbox3Change}
+          checked={isChecked3}>
+          {(Toggle) => (
+            <Button as="label" htmlFor="new-checkbox">
+              <Toggle />
+              We in there
+            </Button>
+          )}
+        </Checkbox>
         <Box mt="3">
           <TextInput
             id="text-input"
