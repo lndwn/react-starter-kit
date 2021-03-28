@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Button } from './button'
 import styled from 'styled-components'
 import { UIText } from 'components/ui-text'
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated } from '@react-spring/web'
 
 const Container = styled.div``
 

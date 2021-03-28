@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useSpring, useTransition, animated } from 'react-spring'
+import { useSpring, useTransition, animated } from '@react-spring/web'
 import { Box } from './box'
 import { IconButton } from './controls'
 import { Icon } from './icon'
@@ -16,18 +16,13 @@ export const Sidebar = (props: SidebarProps) => {
   const theme = React.useContext(ThemeContext)
 
   const menuSpring = useSpring({
-    position: 'fixed',
-    overflow: 'visible',
-    zIndex: theme.zIndices.draw,
-    top: 0,
-    left: 0,
+    
     transform:
       props.isOpen ?? isMenuOpen ? 'translateX(0%)' : 'translateX(-100%)',
   })
 
-  const iconTransition = useTransition(props.isOpen ?? isMenuOpen, null, {
+  const iconTransition = useTransition([<Icon glyph="IconTimes" size="4" />, <Icon glyph="IconBars" size="4" />], {
     from: {
-      position: 'absolute',
       opacity: 0,
       // transform: 'rotate(0deg)',
     },
@@ -40,15 +35,25 @@ export const Sidebar = (props: SidebarProps) => {
       // transform: 'rotate(1440deg)',
     },
   })
+  const iconFragment = iconTransition((style, item) => <animated.div style={{
+      position: 'absolute', ...style}}>{item}</animated.div>)
 
   return (
     <>
       {/* space-holder for the menu button */}
       <Box height="2" />
-      <animated.div style={menuSpring}>
+      <animated.div
+        style={{
+          position: 'fixed',
+          overflow: 'visible',
+          zIndex: theme.zIndices.draw,
+          top: 0,
+          left: 0,
+          ...menuSpring,
+        }}>
         <Box position="absolute" left="100%">
           <IconButton onClick={handleMenuClick} ml="3" mt="2">
-            {iconTransition.map(({ item: isOpen, props: spring, key }) =>
+            {iconTransition() =>
               isOpen ? (
                 <animated.div style={spring} key={key}>
                   <Icon glyph="IconTimes" size="4" />

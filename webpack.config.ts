@@ -1,28 +1,33 @@
-import webpack from 'webpack'
+import {
+  Configuration as WebpackConfig,
+  EnvironmentPlugin,
+  ProvidePlugin,
+} from 'webpack'
+import { Configuration as WebpackDevServerConfig } from 'webpack-dev-server'
 import path from 'path'
 import HtmlPlugin from 'html-webpack-plugin'
 import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin'
 import GitRevisionPlugin from 'git-revision-webpack-plugin'
-import ManifestPlugin from 'webpack-manifest-plugin'
-import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin'
+import { WebpackManifestPlugin as ManifestPlugin } from 'webpack-manifest-plugin'
 
-const gitRevision = new GitRevisionPlugin()
+interface Config extends WebpackConfig {
+  devServer: WebpackDevServerConfig
+}
 
-const isDevelopment = process.env.NODE_ENV !== 'production'
-
-export default {
+const config: Config = {
+  target: 'web',
   context: path.resolve(__dirname, 'src'),
   resolve: {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.svg', '.png'],
   },
   entry: {
-    app: [path.resolve('./src/index.tsx')],
+    main: [path.resolve('./src/index.tsx')],
   },
   output: {
     path: path.resolve('./public'),
     publicPath: '/',
-    filename: '[name].[hash].js',
+    filename: '[name].[contenthash].js',
     chunkFilename: '[name].[chunkhash].js',
     sourceMapFilename: '[file].map',
   },
@@ -76,21 +81,18 @@ export default {
   },
   devServer: {
     contentBase: path.resolve('./public'),
-    writeToDisk: true,
-    compress: true,
     hot: true,
     historyApiFallback: true,
     host: '0.0.0.0',
     port: 3000,
   },
-  stats: {
-    assets: false,
-    children: false,
-    modules: false,
-  },
   plugins: [
+    new ProvidePlugin({
+      process: 'process/browser',
+    }),
+    // @ts-expect-error
     new CleanPlugin(),
-    // isDevelopment && new ReactRefreshPlugin(),
+    // @ts-expect-error
     new ManifestPlugin(),
     new HtmlPlugin({
       title: 'React, TypeScript, Webpack Scaffold',
@@ -100,14 +102,19 @@ export default {
       },
       favicon: path.resolve('./src/assets/favicon.ico'),
     }),
-    gitRevision,
-    new webpack.EnvironmentPlugin({
+    // @ts-expect-error
+    new GitRevisionPlugin({
+      branch: true,
+    }),
+    new EnvironmentPlugin({
       NODE_ENV: 'development',
-      SENTRY_RELEASE: gitRevision.commithash(),
-      VERSION: gitRevision.version(),
-      COMMITHASH: gitRevision.commithash(),
-      BRANCH: gitRevision.branch(),
+      SENTRY_RELEASE: '[git-revision-hash]',
+      VERSION: '[git-revision-version]',
+      COMMITHASH: '[git-revision-hash]',
+      BRANCH: '[git-revision-branch]',
       BROWSERSLIST_ENV: 'development',
     }),
-  ].filter(Boolean),
+  ],
 }
+
+export default config

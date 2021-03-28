@@ -1,3 +1,6 @@
 export * from './use-document-title'
-export * from './use-system-color-scheme'
+export * from './use-intersection-observer'
+export * from './use-media-query'
 export * from './use-pointer-info'
+export * from './use-resize-observer'
+export * from './use-system-color-scheme'

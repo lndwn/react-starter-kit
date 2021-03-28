@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated } from '@react-spring/web'
 import { Icon } from '../icon'
 import { UIText } from '../ui-text'
 import { DefaultButton } from './button'

@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { UIText } from '../ui-text'
 import { Button } from './button'
-import { animated, useSpring } from 'react-spring'
+import { animated, useSpring } from '@react-spring/web'
 import {
   SpaceProps,
   BorderRadiusProps,

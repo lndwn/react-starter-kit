@@ -1,10 +1,15 @@
 import * as React from 'react'
 
-/**
- * simple hook allowing setting the html document title
- */
-export const useDocumentTitle = (title: string) => {
+export const useDocumentTitle = (title?: string) => {
+  const [documentTitle, setDocumentTitle] = React.useState<string | undefined>(
+    title
+  )
+
   React.useEffect(() => {
-    document.title = title
+    if (title) setDocumentTitle(title)
   }, [title])
+
+  React.useEffect(() => {
+    if (documentTitle) document.title = documentTitle
+  }, [documentTitle])
 }

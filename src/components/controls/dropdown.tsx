@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { DefaultButton } from './button'
-import { useTransition, animated } from 'react-spring'
+import { useTransition, animated } from '@react-spring/web'
 import { UIText } from 'components/ui-text'
 import { Icon } from 'components/icon'
 import { Flex } from 'components/box'
