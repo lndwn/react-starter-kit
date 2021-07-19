@@ -7,7 +7,7 @@ import { defaultTheme, darkTheme } from '../theme/theme'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory, MemoryHistory } from 'history'
 import { AppState } from '../store/root-reducer'
-import { GlobalStyle } from '../style/global-style.sc'
+import { GlobalStyle } from '../style/global-style'
 
 const initialState = {} as AppState
 const mockStore = configureStore([reduxThunk])

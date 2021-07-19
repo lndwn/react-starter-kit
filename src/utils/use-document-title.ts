@@ -1,15 +1,18 @@
 import * as React from 'react'
+import { useLocation } from 'react-router'
 
-export const useDocumentTitle = (title?: string) => {
-  const [documentTitle, setDocumentTitle] = React.useState<string | undefined>(
-    title
-  )
+export const useDocumentTitle = (title: string) => {
+  const location = useLocation()
+  React.useLayoutEffect(() => {
+    document.title = title
+  }, [location.pathname, title])
+}
 
-  React.useEffect(() => {
-    if (title) setDocumentTitle(title)
-  }, [title])
+interface WithDocumentTitleProps {
+  title: string
+}
 
-  React.useEffect(() => {
-    if (documentTitle) document.title = documentTitle
-  }, [documentTitle])
+export const WithDocumentTitle = (props: WithDocumentTitleProps) => {
+  useDocumentTitle(props.title)
+  return null
 }

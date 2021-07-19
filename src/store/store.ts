@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import rootReducer, { AppState } from './root-reducer'
-import { throttle } from 'lodash'
+import { throttle } from 'lodash-es'
 import warning from 'tiny-warning'
 
 const itemName = `${process.env.npm_package_name}-${process.env.npm_package_version}`

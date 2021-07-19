@@ -14,8 +14,8 @@ A project scaffold for React apps, including:
   Jest will run test files named like `my-component.**test**.tsx` and provide the results on the command line.
 - Prettier  
   Prettier automatically formats your code so you don't have to!
-- TSLint  
-  TSLint will give you additional feedback in the IDE and throw errors during build if your code has errors. Although deprecated in favour of ESLint, ESLint is a huge pain in the ass to get working correctly with TypeScript. By and large, TypeScript provides decent linting, but TSLint allows you to set more specific rules for your code style.
+- ESLint  
+  ESLint will give you additional feedback in the IDE and throw errors during build if your code has errors.
 
 **This is still a work-in-progress and may still include some configuration problems.**
 

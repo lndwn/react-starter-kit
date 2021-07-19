@@ -16,9 +16,14 @@
     "editor.formatOnSave": true
   },
   "files.exclude": {
-    "**/node_modules/**": true
+    "**/node_modules/**": false
   },
-  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
   "explorer.sortOrder": "type",
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.alwaysShowStatus": true,

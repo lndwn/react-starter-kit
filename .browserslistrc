@@ -1,6 +1,6 @@
 [production]
 > 1%
-ie 10
+ie 11
 
 [development]
 last 1 version

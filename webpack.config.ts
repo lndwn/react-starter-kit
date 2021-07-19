@@ -6,30 +6,29 @@ import {
 import { Configuration as WebpackDevServerConfig } from 'webpack-dev-server'
 import path from 'path'
 import HtmlPlugin from 'html-webpack-plugin'
-import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin'
-import GitRevisionPlugin from 'git-revision-webpack-plugin'
-import { WebpackManifestPlugin as ManifestPlugin } from 'webpack-manifest-plugin'
+import { GitRevisionPlugin } from 'git-revision-webpack-plugin'
 
 interface Config extends WebpackConfig {
   devServer: WebpackDevServerConfig
 }
 
 const config: Config = {
-  target: 'web',
   context: path.resolve(__dirname, 'src'),
   resolve: {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.svg', '.png'],
   },
   entry: {
-    main: [path.resolve('./src/index.tsx')],
+    app: [path.resolve('./src/index.tsx')],
   },
   output: {
     path: path.resolve('./public'),
     publicPath: '/',
-    filename: '[name].[contenthash].js',
-    chunkFilename: '[name].[chunkhash].js',
+    filename: '[id].[contenthash].js',
+    chunkFilename: '[id].[contenthash].js',
     sourceMapFilename: '[file].map',
+    assetModuleFilename: 'images/[hash][ext][query]',
+    clean: true,
   },
   optimization: {
     splitChunks: {
@@ -41,23 +40,23 @@ const config: Config = {
     rules: [
       {
         enforce: 'pre',
-        test: /\.(ts|tsx|js|jsx)$/,
+        test: /\.(tsx?|jsx?)$/,
         exclude: /node_modules/,
         use: ['eslint-loader'],
       },
       {
         enforce: 'pre',
-        test: /\.(ts|tsx|js|jsx)$/,
+        test: /\.(tsx?|js?x)$/,
         exclude: /node_modules/,
         use: ['source-map-loader'],
       },
       {
-        test: /\.(ts|tsx)$/,
+        test: /\.(tsx?)$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
       {
-        test: /\.svg(\?.+)?$/,
+        test: /\.svg$/,
         use: ['@svgr/webpack', 'url-loader'],
       },
       {
@@ -67,15 +66,7 @@ const config: Config = {
       {
         test: /\.(png|jpeg|woff2|woff|otf|ttf)$/i,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'assets',
-            },
-          },
-        ],
+        type: 'asset/resource',
       },
     ],
   },
@@ -90,10 +81,6 @@ const config: Config = {
     new ProvidePlugin({
       process: 'process/browser',
     }),
-    // @ts-expect-error
-    new CleanPlugin(),
-    // @ts-expect-error
-    new ManifestPlugin(),
     new HtmlPlugin({
       title: 'React, TypeScript, Webpack Scaffold',
       template: path.resolve('./src/index.html'),
@@ -102,12 +89,10 @@ const config: Config = {
       },
       favicon: path.resolve('./src/assets/favicon.ico'),
     }),
-    // @ts-expect-error
     new GitRevisionPlugin({
       branch: true,
     }),
     new EnvironmentPlugin({
-      NODE_ENV: 'development',
       SENTRY_RELEASE: '[git-revision-hash]',
       VERSION: '[git-revision-version]',
       COMMITHASH: '[git-revision-hash]',

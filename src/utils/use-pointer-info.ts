@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { debounce } from 'debounce'
+import { debounce } from 'lodash-es'
 
 export const usePointerInfo = () => {
   const [hasPointer, setHasPointer] = React.useState(false)
