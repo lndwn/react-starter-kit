@@ -17,6 +17,9 @@
     "release": "standard-version",
     "clean": "rm -rf node_modules && npm i"
   },
+  "sideEffects": [
+    "*.css"
+  ],
   "dependencies": {
     "@react-spring/web": "^9.2.4",
     "@reduxjs/toolkit": "^1.6.0",
@@ -91,11 +94,9 @@
     "file-loader": "^6.2.0",
     "git-revision-webpack-plugin": "^5.0.0",
     "html-webpack-plugin": "^5.3.2",
-    "husky": "^7.0.1",
     "isomorphic-fetch": "^3.0.0",
     "jest": "^27.0.6",
     "jest-styled-components": "^7.0.5",
-    "lint-staged": "^11.0.1",
     "msw": "^0.32.0",
     "prettier": "^2.3.2",
     "process": "^0.11.10",
@@ -113,16 +114,5 @@
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-manifest-plugin": "^3.1.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsc && lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix",
-      "tsc"
-    ]
   }
 }
