@@ -35,6 +35,12 @@ const config: Config = {
       chunks: 'all',
     },
   },
+  stats: {
+    all: false,
+    assets: true,
+    modules: true,
+    chunks: true,
+  },
   devtool: 'source-map',
   module: {
     rules: [
