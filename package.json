@@ -18,7 +18,9 @@
     "clean": "rm -rf node_modules && npm i"
   },
   "sideEffects": [
-    "*.css"
+    "*.css",
+    "src/theme/*",
+    "src/styles/*"
   ],
   "dependencies": {
     "@react-spring/web": "^9.2.4",

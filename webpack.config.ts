@@ -13,6 +13,7 @@ interface Config extends WebpackConfig {
 }
 
 const config: Config = {
+  target: 'web',
   context: path.resolve(__dirname, 'src'),
   resolve: {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
