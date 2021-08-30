@@ -1,13 +1,14 @@
+import colors from 'open-color'
+
 export const defaultTheme = {
-  scheme: 'light',
   borders: {},
   borderStyles: {},
   borderWidths: {},
   colors: {
-    bg: ['#ffffff', '#eeeeee', '#dddddd', '#cccccc', '#bbbbbb'],
-    whites: ['#ffffff', '#eeeeee', '#dddddd', '#cccccc', '#bbbbbb'],
-    text: ['#000000', '#111111', '#222222', '#333333', '#444444'],
-    blacks: ['#000000', '#111111', '#222222', '#333333', '#444444'],
+    bg: colors.gray,
+    text: [...colors.gray].reverse(),
+    blacks: colors.gray,
+    whites: [...colors.gray].reverse(),
     accent: '#32cd32',
     success: '#32cd32',
     error: '#ff4500',
@@ -85,7 +86,6 @@ export const defaultTheme = {
 
 export const darkTheme = {
   ...defaultTheme,
-  scheme: 'dark',
   colors: {
     ...defaultTheme.colors,
     bg: [...defaultTheme.colors.text],

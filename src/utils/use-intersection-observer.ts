@@ -1,14 +1,14 @@
 import * as React from 'react'
 
 interface UseIntersectionObserverProps {
-  options: IntersectionObserverInit
+  options?: IntersectionObserverInit
   callback: IntersectionObserverCallback
 }
 
 export const useIntersectionObserver = (
   props: UseIntersectionObserverProps
 ) => {
-  const ref = React.useRef<HTMLElement | null>(null)
+  const ref = React.useRef<Element | null>(null)
   React.useEffect(() => {
     const observer = new IntersectionObserver(props.callback, props.options)
     if (ref.current) {
@@ -20,10 +20,11 @@ export const useIntersectionObserver = (
   return ref
 }
 
-interface WithIntersectionObserverProps extends UseIntersectionObserverProps {
-  children: (
-    ref?: React.MutableRefObject<HTMLElement | null>
-  ) => React.ReactNode
+interface WithIntersectionObserverProps<T = Element>
+  extends UseIntersectionObserverProps {
+  children: (provided: {
+    ref?: React.MutableRefObject<T | null> | React.LegacyRef<T | null>
+  }) => JSX.Element
 }
 
 export const WithIntersectionObserver = (
@@ -34,5 +35,5 @@ export const WithIntersectionObserver = (
     callback: props.callback,
   })
 
-  return props.children(ref)
+  return props.children({ ref })
 }

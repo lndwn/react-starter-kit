@@ -49,7 +49,10 @@ const config: Config = {
         enforce: 'pre',
         test: /\.(tsx?|jsx?)$/,
         exclude: /node_modules/,
-        use: ['eslint-loader'],
+        loader: 'eslint-loader',
+        options: {
+          failOnError: false,
+        },
       },
       {
         enforce: 'pre',
