@@ -1,4 +1,5 @@
-import * as React from 'react'
+import { useEffect, useRef } from 'react'
+import { useVisibility } from './use-visibility'
 
 interface UseIntervalOptions {
   interval?: number
@@ -7,21 +8,21 @@ interface UseIntervalOptions {
 
 export const useInterval = (
   callback: () => void,
-  { interval = 5000, isEnabled = true }: UseIntervalOptions,
+  { interval = 5000, isEnabled = true }: UseIntervalOptions
 ) => {
-  const intervalId = React.useRef<number | null>(null)
+  const intervalId = useRef<number | null>(null)
 
-  const handleVisibilityChange = () => {
-    if (intervalId.current && document.hidden) {
+  useVisibility((state) => {
+    if (intervalId.current && state === 'hidden') {
       window.clearInterval(intervalId.current)
     }
-    if (isEnabled && !document.hidden) {
+    if (isEnabled && state === 'visible') {
       if (intervalId.current) clearInterval(intervalId.current)
       intervalId.current = window.setInterval(callback, interval)
     }
-  }
+  }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isEnabled && intervalId.current) {
       window.clearInterval(intervalId.current)
     }
@@ -30,13 +31,10 @@ export const useInterval = (
       intervalId.current = window.setInterval(callback, interval ?? 5000)
     }
 
-    window.addEventListener('visibilitychange', handleVisibilityChange)
-
     return () => {
       if (intervalId.current) {
         window.clearInterval(intervalId.current)
       }
-      window.removeEventListener('visibilitychange', handleVisibilityChange)
     }
   }, [isEnabled, interval, callback])
 }

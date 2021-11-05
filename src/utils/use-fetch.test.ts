@@ -43,27 +43,6 @@ describe('use-fetch', () => {
     })
   })
 
-  test('ideal - parses response body using option', async () => {
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useFetch<{ foo: string[] }>('https://host.tld/foo/bar', {
-        init: {
-          body: JSON.stringify({
-            foo: ['bar', 'baz'],
-          }),
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-        parseAs: 'text',
-      })
-    )
-
-    await waitForNextUpdate()
-
-    expect(result.current.responseBody).toEqual('{"foo":["bar","baz"]}')
-  })
-
   test('error - can be cancelled', async () => {
     const { result, waitForNextUpdate } = renderHook(() =>
       useFetch<{ foo: string[] }>('https://host.tld/foo/bar', {

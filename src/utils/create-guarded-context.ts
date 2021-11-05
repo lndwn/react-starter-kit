@@ -1,19 +1,20 @@
-import * as React from 'react'
+import {
+  createContext as createReactContext,
+  useContext as useReactContext,
+} from 'react'
 
-/**
- * createGuardedContext includes a default undefined check
- * such that no undefined checked will be required
- * and no default values are needed
- */
-export const createGuardedContext = <C extends unknown | null>() => {
-  const guardedContext = React.createContext<C | undefined>(undefined)
-  const useGuardedContext = () => {
-    const value = React.useContext(guardedContext)
+export const createContext = <C extends unknown | null>() => {
+  const context = createReactContext<C | undefined>(undefined)
+  const useContext = () => {
+    const value = useReactContext(context)
     if (value === undefined) {
       throw new Error('Consumer must be inside a Provider with a value')
     }
     return value
   }
+  const WithContextValue = (props: {
+    children: (provided: C) => JSX.Element
+  }) => props.children(useContext())
 
-  return [useGuardedContext, guardedContext.Provider] as const
+  return [useContext, context.Provider, WithContextValue] as const
 }

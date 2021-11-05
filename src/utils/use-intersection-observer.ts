@@ -1,39 +1,43 @@
-import * as React from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { createHook } from './create-hook'
 
-interface UseIntersectionObserverProps {
+interface UseIntersectionObserverProps<T = Element> {
+  refs: React.MutableRefObject<T[]>
   options?: IntersectionObserverInit
-  callback: IntersectionObserverCallback
 }
 
-export const useIntersectionObserver = (
-  props: UseIntersectionObserverProps
-) => {
-  const ref = React.useRef<Element | null>(null)
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(props.callback, props.options)
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-    return () => observer.disconnect()
-  }, [props])
+export const [useIntersectionObserver, , WithIntersectionObserver] = createHook(
+  (props: UseIntersectionObserverProps) => {
+    const [elements, setElements] = useState<boolean[]>([])
 
-  return ref
-}
+    const callback = useCallback((entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting)
+          setElements((els) => {
+            const newElse = [...els]
+            newElse[i] = true
+            return newElse
+          })
+        else
+          setElements((els) => {
+            const newElse = [...els]
+            newElse[i] = false
+            return newElse
+          })
+      })
+    }, [])
 
-interface WithIntersectionObserverProps<T = Element>
-  extends UseIntersectionObserverProps {
-  children: (provided: {
-    ref?: React.MutableRefObject<T | null> | React.LegacyRef<T | null>
-  }) => JSX.Element
-}
+    useEffect(() => {
+      const observer = new IntersectionObserver(callback, props.options)
+      if (props.refs?.current.length > 0) {
+        props.refs.current.forEach((el) => {
+          observer.observe(el)
+        })
+        setElements(([] as boolean[]).fill(false, 0, props.refs.current.length))
+      }
+      return () => observer.disconnect()
+    }, [])
 
-export const WithIntersectionObserver = (
-  props: WithIntersectionObserverProps
-) => {
-  const ref = useIntersectionObserver({
-    options: props.options,
-    callback: props.callback,
-  })
-
-  return props.children({ ref })
-}
+    return elements
+  }
+)
