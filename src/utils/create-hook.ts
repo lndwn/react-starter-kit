@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 
 export function createHook<
-  Props = unknown | unknown[],
+  Props = unknown,
   ProvidedProps = unknown,
   Ref = unknown
 >(hook: (props: Props) => ProvidedProps) {

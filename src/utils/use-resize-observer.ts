@@ -1,10 +1,10 @@
-import * as React from 'react'
+import { useEffect } from 'react'
 
 export const useResizeObserver = <T extends Element>(
   target: T,
   callback: ResizeObserverCallback
 ) => {
-  React.useEffect(() => {
+  useEffect(() => {
     const observer = new ResizeObserver(callback)
     if (target) {
       observer.observe(target)

@@ -12,6 +12,7 @@ export const createContext = <C extends unknown | null>() => {
     }
     return value
   }
+
   const WithContextValue = (props: {
     children: (provided: C) => JSX.Element
   }) => props.children(useContext())
