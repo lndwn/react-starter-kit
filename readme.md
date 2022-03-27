@@ -36,7 +36,7 @@ A project scaffold for React apps, including:
    ```
 
 1. Download this repository as a new project  
-    `npx` allows you to execute a remote `npm` package, without having to install it locally on your machine first.
+    `npx` allows you to execute a remote `npm` package, without having to install it into your project.
 
    ```bash
    npx create-from-repo \
@@ -80,7 +80,7 @@ A Linter will analyse your code and identify common mistakes in syntax, or code 
 npm run lint
 ```
 
-Linting has been setup with `tslint`. The `lint` command uses the TypeScript compiler to check types first, then runs TSLint. Running both may be unneccessary, but better to be safe than sorry.
+Linting has been setup with `eslint`. The `lint` command uses the TypeScript compiler to check types first, then runs ESLint. Running both may be unneccessary, but better to be safe than sorry.
 
 ## Building
 

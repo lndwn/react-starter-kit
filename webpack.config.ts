@@ -7,6 +7,9 @@ import { Configuration as WebpackDevServerConfig } from 'webpack-dev-server'
 import path from 'path'
 import HtmlPlugin from 'html-webpack-plugin'
 import { GitRevisionPlugin } from 'git-revision-webpack-plugin'
+import packageConfig from './package.json'
+
+const gitRevisionPlugin = new GitRevisionPlugin({ branch: true })
 
 interface Config extends WebpackConfig {
   devServer: WebpackDevServerConfig
@@ -99,14 +102,14 @@ const config: Config = {
       },
       favicon: path.resolve('./src/assets/favicon.ico'),
     }),
-    new GitRevisionPlugin({
-      branch: true,
-    }),
+    gitRevisionPlugin,
     new EnvironmentPlugin({
-      SENTRY_RELEASE: '[git-revision-hash]',
-      VERSION: '[git-revision-version]',
-      COMMITHASH: '[git-revision-hash]',
-      BRANCH: '[git-revision-branch]',
+      SENTRY_RELEASE: gitRevisionPlugin.commithash(),
+      VERSION: gitRevisionPlugin.version(),
+      PACKAGE_VERSION: packageConfig.version,
+      COMMITHASH: gitRevisionPlugin.commithash(),
+      BRANCH: gitRevisionPlugin.branch(),
+      LAST_COMMIT: gitRevisionPlugin.lastcommitdatetime(),
       BROWSERSLIST_ENV: 'development',
     }),
   ],

@@ -1,5 +1,14 @@
 import colors from 'open-color'
 
+const scale = [
+  0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.25, 1.5, 2, 3, 5, 8, 13, 21,
+  34,
+]
+
+const fontSizes = scale.slice(4, -4).map((s) => `${s}rem`)
+const sizes = scale.slice(6).map((s) => `${s}rem`)
+const space = scale.map((s) => `${s}rem`)
+
 export const defaultTheme = {
   borders: {},
   borderStyles: {},
@@ -9,23 +18,16 @@ export const defaultTheme = {
     text: [...colors.gray].reverse(),
     blacks: colors.gray,
     whites: [...colors.gray].reverse(),
-    accent: '#32cd32',
-    success: '#32cd32',
-    error: '#ff4500',
+    primary: '',
+    secondary: '',
+    accent: '',
+    accentAlt: '',
   },
   fonts: {
     heading: '"Inter", sans-serif',
     body: '"Inter", sans-serif',
   },
-  fontSizes: [
-    '0.75rem',
-    '0.875rem',
-    '1rem',
-    '1.25rem',
-    '1.5rem',
-    '3rem',
-    '5rem',
-  ],
+  fontSizes,
   fontWeights: {
     thin: 100,
     extraLight: 200,
@@ -44,7 +46,7 @@ export const defaultTheme = {
   },
   lineHeights: {
     solid: 1,
-    heading: 1.15,
+    heading: 1.125,
     smallHeading: 1.25,
     copy: 1.5,
   },

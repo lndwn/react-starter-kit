@@ -1,4 +1,4 @@
-import { useContainerQueries } from 'enhancers/container-queries-provider'
+import { useContainerQuery } from 'enhancers/container-queries-provider'
 import React, { useEffect, useMemo, useRef } from 'react'
 import styled, { DefaultTheme } from 'styled-components'
 import { ConfigStyle, space, SpaceProps, system } from 'styled-system'
@@ -13,7 +13,7 @@ export const Container = (props: {
     [props.breakpoints]
   )
   const ref = useRef<HTMLDivElement | null>(null)
-  const cq = useContainerQueries()
+  const cq = useContainerQuery()
 
   useEffect(() => {
     if (ref.current) {

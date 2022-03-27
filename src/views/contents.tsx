@@ -2,8 +2,11 @@ import { useRef } from 'react'
 import { WithIntersectionObserver } from 'utils/use-intersection-observer'
 import { usePrefersColorScheme } from 'utils/use-prefers-color-scheme'
 import { useNetworkInformation } from 'utils/use-network-information'
-import { ContainerQueriesProvider } from 'enhancers/container-queries-provider'
-import { Container, Flex } from './cq-container'
+import {
+  ContainerQueriesProvider,
+  Container,
+} from 'enhancers/container-queries-provider'
+import { Inline } from 'components/layout'
 
 export const Contents = () => {
   const liRefs = useRef<HTMLLIElement[]>([])
@@ -51,9 +54,19 @@ export const Contents = () => {
                 </pre>
               </li>
               <li>
-                <Flex px={1} smColor="blue" mdColor="red" lgColor="green">
-                  I&apos;m inside a container query!
-                </Flex>
+                <Container
+                  breakpoints={{ sm: 200, md: 400, lg: 600 }}
+                  css={{
+                    '.sm': { color: 'blue' },
+                    '.md': { color: 'red' },
+                    '.lg': { color: 'green' },
+                  }}>
+                  {({ containerRef, ...rest }) => (
+                    <Inline ref={containerRef} {...rest}>
+                      asdf
+                    </Inline>
+                  )}
+                </Container>
               </li>
             </>
           )}
